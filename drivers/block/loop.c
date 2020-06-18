@@ -1381,6 +1381,7 @@ static int loop_set_block_size(struct loop_device *lo, unsigned long arg)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (lo->lo_queue->limits.logical_block_size == arg)
 		return 0;
 
@@ -1399,6 +1400,15 @@ static int loop_set_block_size(struct loop_device *lo, unsigned long arg)
 
 	blk_mq_freeze_queue(lo->lo_queue);
 
+=======
+	if (lo->lo_queue->limits.logical_block_size != arg) {
+		sync_blockdev(lo->lo_device);
+		invalidate_bdev(lo->lo_device);
+	}
+
+	blk_mq_freeze_queue(lo->lo_queue);
+
+>>>>>>> 01317ebd8598 (loop: replace kill_bdev with invalidate_bdev)
 	/* invalidate_bdev should have truncated all the pages */
 	if (lo->lo_queue->limits.logical_block_size != arg &&
 			lo->lo_device->bd_inode->i_mapping->nrpages) {
