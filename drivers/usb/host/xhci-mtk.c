@@ -978,6 +978,7 @@ static int xhci_mtk_remove(struct platform_device *dev)
 	pm_runtime_disable(&dev->dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	xhci->xhc_state |= XHCI_STATE_REMOVING;
 
 #if IS_ENABLED(CONFIG_MACH_MT6853)
@@ -987,6 +988,8 @@ static int xhci_mtk_remove(struct platform_device *dev)
 	}
 #endif
 
+=======
+>>>>>>> cfb8b3ba68c8 (usb: host: xhci-mtk: avoid runtime suspend when removing hcd)
 =======
 >>>>>>> cfb8b3ba68c8 (usb: host: xhci-mtk: avoid runtime suspend when removing hcd)
 	usb_remove_hcd(shared_hcd);
