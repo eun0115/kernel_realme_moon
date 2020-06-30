@@ -154,9 +154,12 @@ SECTIONS
 		KEEP(*(.altinstructions))
 		__alt_instructions_end = .;
 	}
+<<<<<<< HEAD
 	.altinstr_replacement : {
 		KEEP(*(.altinstr_replacement))
 	}
+=======
+>>>>>>> 7db1425326b6 (arm64/alternatives: use subsections for replacement sequences)
 
 	. = ALIGN(PAGE_SIZE);
 	__inittext_end = .;
