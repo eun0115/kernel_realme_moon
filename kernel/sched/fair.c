@@ -9562,6 +9562,7 @@ static int detach_tasks(struct lb_env *env, struct rq_flags *rf)
 			goto next;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(OPLUS_FEATURE_UIFIRST) && !defined(CONFIG_MTK_TASK_TURBO)
 // XieLiujie@BSP.KERNEL.PERFORMANCE, 2020/05/25, Add for UIFirst
 		if (sysctl_uifirst_enabled && test_task_ux(p)) {
@@ -9575,6 +9576,8 @@ static int detach_tasks(struct lb_env *env, struct rq_flags *rf)
 #endif /* OPLUS_FEATURE_UIFIRST */
 		load = task_h_load(p);
 =======
+=======
+>>>>>>> 731faecd5aee (sched/fair: handle case of task_h_load() returning 0)
 		/*
 		 * Depending of the number of CPUs and tasks and the
 		 * cgroup hierarchy, task_h_load() can return a null
@@ -9584,6 +9587,9 @@ static int detach_tasks(struct lb_env *env, struct rq_flags *rf)
 		 */
 		load = max_t(unsigned long, task_h_load(p), 1);
 
+<<<<<<< HEAD
+>>>>>>> 731faecd5aee (sched/fair: handle case of task_h_load() returning 0)
+=======
 >>>>>>> 731faecd5aee (sched/fair: handle case of task_h_load() returning 0)
 
 		if (sched_feat(LB_MIN) && load < 16 && !env->sd->nr_balance_failed)
