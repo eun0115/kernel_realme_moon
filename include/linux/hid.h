@@ -930,7 +930,10 @@ static inline void hid_map_usage(struct hid_input *hidinput,
 		__u8 type, unsigned int c)
 {
 	struct input_dev *input = hidinput->input;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a083dcdcfa25 (HID: core: Sanitize event code and type when mapping input)
 	unsigned long *bmap = NULL;
 	unsigned int limit = 0;
 
@@ -955,7 +958,11 @@ static inline void hid_map_usage(struct hid_input *hidinput,
 
 	if (unlikely(c > limit || !bmap)) {
 		pr_warn_ratelimited("%s: Invalid code %d type %d\n",
+<<<<<<< HEAD
 		input->name, c, type);
+=======
+				    input->name, c, type);
+>>>>>>> a083dcdcfa25 (HID: core: Sanitize event code and type when mapping input)
 		*bit = NULL;
 		return;
 	}
