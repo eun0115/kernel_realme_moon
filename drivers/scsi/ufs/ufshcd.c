@@ -1931,6 +1931,9 @@ start:
 			}
 			spin_unlock_irqrestore(hba->host->host_lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 96ee4b07f6c0 (Revert "overflow.h: Add allocation size calculation helpers")
 			/* MTK PATCH */
 			/*
 			 * During suspend flow the link may already in h8,
@@ -1939,10 +1942,13 @@ start:
 			 */
 			wq = flush_work(&hba->clk_gating.ungate_work);
 			if (!wq)
+<<<<<<< HEAD
 =======
 			flush_result = flush_work(&hba->clk_gating.ungate_work);
 			if (hba->clk_gating.is_suspended && !flush_result)
 >>>>>>> 7a44fce0d135 (scsi: ufs: Fix possible infinite loop in ufshcd_hold)
+=======
+>>>>>>> 96ee4b07f6c0 (Revert "overflow.h: Add allocation size calculation helpers")
 				goto out;
 			spin_lock_irqsave(hba->host->host_lock, flags);
 			goto start;
