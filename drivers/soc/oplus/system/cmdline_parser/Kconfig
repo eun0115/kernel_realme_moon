@@ -3,5 +3,3 @@ config OPLUS_FEATURE_CMDLINE
   default n
   help 
         define this config to get command line.
-
-
