@@ -64,12 +64,15 @@ int notrace unwind_frame(struct stackframe *frame)
 	frame->sp = *(unsigned long *)(fp - 8);
 	frame->pc = *(unsigned long *)(fp - 4);
 #endif
+<<<<<<< HEAD
 
 	if (ALIGN(frame->fp, THREAD_SIZE) != ALIGN(fp, THREAD_SIZE))
 		return -EINVAL;
 
 	if (ALIGN(frame->sp, THREAD_SIZE) != ALIGN(low, THREAD_SIZE))
 		return -EINVAL;
+=======
+>>>>>>> 86a92de78333 (ARM: 8992/1: Fix unwind_frame for clang-built kernels)
 
 	return 0;
 }

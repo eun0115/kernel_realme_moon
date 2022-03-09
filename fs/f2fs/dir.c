@@ -1016,6 +1016,10 @@ int f2fs_fill_dentries(struct dir_context *ctx, struct f2fs_dentry_ptr *d,
 
 		/* check memory boundary before moving forward */
 		bit_pos += GET_DENTRY_SLOTS(le16_to_cpu(de->name_len));
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 		if (unlikely(bit_pos > d->max ||
 				le16_to_cpu(de->name_len) > F2FS_NAME_LEN)) {
 			f2fs_warn(sbi, "%s: corrupted namelen=%d, run fsck to fix.",
@@ -1026,6 +1030,28 @@ int f2fs_fill_dentries(struct dir_context *ctx, struct f2fs_dentry_ptr *d,
 		}
 
 		if (IS_ENCRYPTED(d->inode)) {
+=======
+		if (unlikely(bit_pos > d->max)) {
+=======
+		if (unlikely(bit_pos > d->max ||
+				le16_to_cpu(de->name_len) > F2FS_NAME_LEN)) {
+>>>>>>> 6a27f426266a (f2fs: check if file namelen exceeds max value)
+=======
+		if (unlikely(bit_pos > d->max)) {
+>>>>>>> bc08d46f010c (f2fs: check memory boundary by insane namelen)
+=======
+		if (unlikely(bit_pos > d->max ||
+				le16_to_cpu(de->name_len) > F2FS_NAME_LEN)) {
+>>>>>>> 6a27f426266a (f2fs: check if file namelen exceeds max value)
+			f2fs_msg(F2FS_I_SB(d->inode)->sb, KERN_WARNING,
+				"%s: corrupted namelen=%d, run fsck to fix.",
+				__func__, le16_to_cpu(de->name_len));
+			set_sbi_flag(F2FS_I_SB(d->inode)->sb->s_fs_info, SBI_NEED_FSCK);
+			return -EINVAL;
+		}
+
+		if (f2fs_encrypted_inode(d->inode)) {
+>>>>>>> bc08d46f010c (f2fs: check memory boundary by insane namelen)
 			int save_len = fstr->len;
 
 			err = fscrypt_fname_disk_to_usr(d->inode,

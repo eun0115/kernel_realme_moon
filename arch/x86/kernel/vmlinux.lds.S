@@ -357,6 +357,10 @@ SECTIONS
 	.bss : AT(ADDR(.bss) - LOAD_OFFSET) {
 		__bss_start = .;
 		*(.bss..page_aligned)
+<<<<<<< HEAD
+		. = ALIGN(PAGE_SIZE);
+=======
+>>>>>>> 53993bba307d (x86/build/lto: Fix truncated .bss with -fdata-sections)
 		*(BSS_MAIN)
 		. = ALIGN(PAGE_SIZE);
 		__bss_stop = .;

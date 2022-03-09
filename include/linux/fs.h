@@ -2054,8 +2054,19 @@ static inline void init_sync_kiocb(struct kiocb *kiocb, struct file *filp)
 #define I_DIO_WAKEUP		(1 << __I_DIO_WAKEUP)
 #define I_LINKABLE		(1 << 10)
 #define I_DIRTY_TIME		(1 << 11)
+<<<<<<< HEAD
+<<<<<<< HEAD
 #define I_WB_SWITCH		(1 << 13)
 #define I_OVL_INUSE		(1 << 14)
+=======
+#define I_DIRTY_TIME_EXPIRED	(1 << 12)
+#define I_WB_SWITCH		(1 << 13)
+#define I_OVL_INUSE			(1 << 14)
+>>>>>>> 856fa4ebf57c (writeback: Avoid skipping inode writeback)
+=======
+#define I_WB_SWITCH		(1 << 13)
+#define I_OVL_INUSE		(1 << 14)
+>>>>>>> 96ee4b07f6c0 (Revert "overflow.h: Add allocation size calculation helpers")
 #define I_SYNC_QUEUED		(1 << 17)
 
 #define I_DIRTY (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_PAGES)
