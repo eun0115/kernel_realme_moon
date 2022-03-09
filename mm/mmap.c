@@ -1,4 +1,4 @@
-/*
+./m2	/*
  * mm/mmap.c
  *
  * Written by obz.
@@ -2496,10 +2496,14 @@ arch_get_unmapped_area_topdown(struct file *filp, const unsigned long addr0,
 	info.high_limit = mm->mmap_base;
 	info.align_mask = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 =======
 	info.align_offset = 0;
 >>>>>>> 4a98f638c104 (mm/mmap.c: initialize align_offset explicitly for vm_unmapped_area)
+=======
+	info.align_offset = 0;
+>>>>>>> 12-rui2
 	addr = vm_unmapped_area(&info);
 
 	/*

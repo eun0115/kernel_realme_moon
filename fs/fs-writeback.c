@@ -1168,10 +1168,14 @@ static bool inode_dirtied_after(struct inode *inode, unsigned long t)
 static int move_expired_inodes(struct list_head *delaying_queue,
 			       struct list_head *dispatch_queue,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       unsigned long dirtied_before)
 =======
 			       int flags, unsigned long dirtied_before)
 >>>>>>> 77322edb99f0 (writeback: Fix sync livelock due to b_dirty_time processing)
+=======
+			       int flags, unsigned long dirtied_before)
+>>>>>>> 12-rui2
 {
 	LIST_HEAD(tmp);
 	struct list_head *pos, *node;
@@ -1248,9 +1252,12 @@ static void queue_io(struct bdi_writeback *wb, struct wb_writeback_work *work,
 	moved += move_expired_inodes(&wb->b_dirty_time, &wb->b_io,
 				     EXPIRE_DIRTY_ATIME, time_expire_jif);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 77322edb99f0 (writeback: Fix sync livelock due to b_dirty_time processing)
 =======
 >>>>>>> 96ee4b07f6c0 (Revert "overflow.h: Add allocation size calculation helpers")
+=======
+>>>>>>> 12-rui2
 	if (moved)
 		wb_io_lists_populated(wb);
 	trace_writeback_queue_io(wb, work, dirtied_before, moved);

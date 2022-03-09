@@ -436,6 +436,7 @@ static void mtk_spi_prepare_transfer(struct spi_master *master,
 		writel(reg_val, mdata->base + SPI_CFG2_REG);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		reg_val = 0;
 		reg_val |= (((cs_holdtime - 1) & 0xffff)
@@ -445,6 +446,9 @@ static void mtk_spi_prepare_transfer(struct spi_master *master,
 =======
 		reg_val = (((cs_time - 1) & 0xffff)
 >>>>>>> 153b6cb86880 (spi: mediatek: use correct SPI_CFG2_REG MACRO)
+=======
+		reg_val = (((cs_time - 1) & 0xffff)
+>>>>>>> 12-rui2
 			   << SPI_ADJUST_CFG0_CS_HOLD_OFFSET);
 		reg_val |= (((cs_setuptime - 1) & 0xffff)
 			   << SPI_ADJUST_CFG0_CS_SETUP_OFFSET);

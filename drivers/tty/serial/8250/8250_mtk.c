@@ -412,6 +412,7 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
 	 */
 	baud = tty_termios_baud_rate(termios);
 
+<<<<<<< HEAD
 	/*
 	 * Store the requested baud rate before calling the generic 8250
 	 * set_termios method. Standard 8250 port expects bauds to be
@@ -424,6 +425,11 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
 	baud = tty_termios_baud_rate(termios);
 
 	serial8250_do_set_termios(port, termios, old);
+=======
+	serial8250_do_set_termios(port, termios, NULL);
+
+	tty_termios_encode_baud_rate(termios, baud, baud);
+>>>>>>> 12-rui2
 
 	tty_termios_encode_baud_rate(termios, baud, baud);
 

@@ -71,8 +71,11 @@ ENTRY(__guest_enter)
 	save_callee_saved_regs x1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	add	x29, x0, #VCPU_CONTEXT
 =======
+=======
+>>>>>>> 12-rui2
 	// Now the host state is stored if we have a pending RAS SError it must
 	// affect the host. If any asynchronous exception is pending we defer
 	// the guest entry.
@@ -83,7 +86,10 @@ ENTRY(__guest_enter)
 
 1:
 	add	x18, x0, #VCPU_CONTEXT
+<<<<<<< HEAD
 >>>>>>> fcc0896148c8 (KVM: arm64: Defer guest entry when an asynchronous exception is pending)
+=======
+>>>>>>> 12-rui2
 
 	// Restore guest regs x0-x17
 	ldp	x0, x1,   [x29, #CPU_XREG_OFFSET(0)]

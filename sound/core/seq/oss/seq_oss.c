@@ -187,9 +187,18 @@ odev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	if (snd_BUG_ON(!dp))
 		return -ENXIO;
 
+<<<<<<< HEAD
 	mutex_lock(&register_mutex);
 	rc = snd_seq_oss_ioctl(dp, cmd, arg);
 	mutex_unlock(&register_mutex);
+=======
+	if (cmd != SNDCTL_SEQ_SYNC &&
+	    mutex_lock_interruptible(&register_mutex))
+		return -ERESTARTSYS;
+	rc = snd_seq_oss_ioctl(dp, cmd, arg);
+	if (cmd != SNDCTL_SEQ_SYNC)
+		mutex_unlock(&register_mutex);
+>>>>>>> 12-rui2
 	return rc;
 }
 

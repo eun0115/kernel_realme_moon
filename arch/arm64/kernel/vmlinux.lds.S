@@ -164,6 +164,7 @@ SECTIONS
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.altinstr_replacement : {
 		KEEP(*(.altinstr_replacement))
 	}
@@ -171,6 +172,8 @@ SECTIONS
 >>>>>>> 7db1425326b6 (arm64/alternatives: use subsections for replacement sequences)
 =======
 >>>>>>> 7db1425326b6 (arm64/alternatives: use subsections for replacement sequences)
+=======
+>>>>>>> 12-rui2
 
 	. = ALIGN(PAGE_SIZE);
 	__inittext_end = .;

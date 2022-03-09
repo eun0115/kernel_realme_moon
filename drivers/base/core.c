@@ -3074,6 +3074,10 @@ static inline bool fwnode_is_primary(struct fwnode_handle *fwnode)
  */
 void set_primary_fwnode(struct device *dev, struct fwnode_handle *fwnode)
 {
+<<<<<<< HEAD
+=======
+	struct device *parent = dev->parent;
+>>>>>>> 12-rui2
 	struct fwnode_handle *fn = dev->fwnode;
 
 	if (fwnode) {
@@ -3088,7 +3092,12 @@ void set_primary_fwnode(struct device *dev, struct fwnode_handle *fwnode)
 	} else {
 		if (fwnode_is_primary(fn)) {
 			dev->fwnode = fn->secondary;
+<<<<<<< HEAD
 			fn->secondary = NULL;
+=======
+			if (!(parent && fn == parent->fwnode))
+				fn->secondary = ERR_PTR(-ENODEV);
+>>>>>>> 12-rui2
 		} else {
 			dev->fwnode = NULL;
 		}

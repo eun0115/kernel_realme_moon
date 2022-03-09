@@ -402,11 +402,15 @@ static int vaddr_get_pfn(struct mm_struct *mm, unsigned long vaddr,
 	down_read(&mm->mmap_sem);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vaddr = untagged_addr(vaddr);
 
 =======
 retry:
 >>>>>>> e0dc293b49c4 (vfio/type1: Support faulting PFNMAP vmas)
+=======
+retry:
+>>>>>>> 12-rui2
 	vma = find_vma_intersection(mm, vaddr, vaddr + 1);
 
 	if (vma && vma->vm_flags & VM_PFNMAP) {
@@ -634,7 +638,8 @@ static int vfio_iommu_type1_pin_pages(void *iommu_data,
 
 		ret = vfio_add_to_pfn_list(dma, iova, phys_pfn[i]);
 		if (ret) {
-			vfio_unpin_page_external(dma, iova, do_accounting);
+			if (put_pfn(phys_pfn[i], dma->prot) && do_accounting)
+				vfio_lock_acct(dma, -1, true);
 			goto pin_unwind;
 		}
 	}

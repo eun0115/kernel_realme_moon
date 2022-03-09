@@ -73,9 +73,12 @@ void apply_alternatives(void *start, size_t length);
 	newinstr "\n"							\
 	"664:\n\t"							\
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	".previous\n\t"							\
 >>>>>>> 7db1425326b6 (arm64/alternatives: use subsections for replacement sequences)
+=======
+>>>>>>> 12-rui2
 	".org	. - (664b-663b) + (662b-661b)\n\t"			\
 	".org	. - (662b-661b) + (664b-663b)\n\t"			\
 	".previous\n"							\

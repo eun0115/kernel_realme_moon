@@ -2774,9 +2774,12 @@ static int wp_page_copy(struct vm_fault *vmf)
 				vmf->address);
 		if (!new_page)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto out;
 		cow_user_page(new_page, old_page, vmf->address, vma);
 =======
+=======
+>>>>>>> 12-rui2
 			goto oom;
 
 		if (!cow_user_page(new_page, old_page, vmf)) {
@@ -2791,7 +2794,10 @@ static int wp_page_copy(struct vm_fault *vmf)
 				put_page(old_page);
 			return 0;
 		}
+<<<<<<< HEAD
 >>>>>>> 90fad04bd421 (mm: fix double page fault on arm64 if PTE_AF is cleared)
+=======
+>>>>>>> 12-rui2
 	}
 
 	if (mem_cgroup_try_charge(new_page, mm, GFP_KERNEL, &memcg, false))

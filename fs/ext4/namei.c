@@ -1468,12 +1468,17 @@ int ext4_search_dir(struct buffer_head *bh, char *search_buf, int buf_size,
 			/* found a match - just to be sure, do
 			 * a full check */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ext4_check_dir_entry(dir, NULL, de, bh, bh->b_data,
 						 bh->b_size, lblk, offset))
 =======
 			if (ext4_check_dir_entry(dir, NULL, de, bh, search_buf,
 						 buf_size, offset))
 >>>>>>> f9d723d0b788 (ext4: fix checking of directory entry validity for inline directories)
+=======
+			if (ext4_check_dir_entry(dir, NULL, de, bh, search_buf,
+						 buf_size, offset))
+>>>>>>> 12-rui2
 				return -1;
 			*res_dir = de;
 			return 1;
@@ -2598,10 +2603,14 @@ int ext4_generic_delete_entry(handle_t *handle,
 	while (i < buf_size - csum_size) {
 		if (ext4_check_dir_entry(dir, NULL, de, bh,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					 bh->b_data, bh->b_size, lblk, i))
 =======
 					 entry_buf, buf_size, i))
 >>>>>>> f9d723d0b788 (ext4: fix checking of directory entry validity for inline directories)
+=======
+					 entry_buf, buf_size, i))
+>>>>>>> 12-rui2
 			return -EFSCORRUPTED;
 		if (de == de_del)  {
 			if (pde)
@@ -3520,10 +3529,16 @@ static int ext4_link(struct dentry *old_dentry,
 
 	if (inode->i_nlink >= EXT4_LINK_MAX)
 		return -EMLINK;
+<<<<<<< HEAD
 
 	err = fscrypt_prepare_link(old_dentry, dir, dentry);
 	if (err)
 		return err;
+=======
+	if (ext4_encrypted_inode(dir) &&
+			!fscrypt_has_permitted_context(dir, inode))
+		return -EXDEV;
+>>>>>>> v4.14.204
 
        if ((ext4_test_inode_flag(dir, EXT4_INODE_PROJINHERIT)) &&
 	   (!projid_eq(EXT4_I(dir)->i_projid,
@@ -3856,6 +3871,16 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 	if (!old.bh || le32_to_cpu(old.de->inode) != old.inode->i_ino)
 		goto end_rename;
 
+<<<<<<< HEAD
+=======
+	if ((old.dir != new.dir) &&
+	    ext4_encrypted_inode(new.dir) &&
+	    !fscrypt_has_permitted_context(new.dir, old.inode)) {
+		retval = -EXDEV;
+		goto end_rename;
+	}
+
+>>>>>>> v4.14.204
 	new.bh = ext4_find_entry(new.dir, &new.dentry->d_name,
 				 &new.de, &new.inlined, NULL);
 	if (IS_ERR(new.bh)) {
@@ -4021,6 +4046,22 @@ static int ext4_cross_rename(struct inode *old_dir, struct dentry *old_dentry,
 	int retval;
 	struct timespec ctime;
 
+<<<<<<< HEAD
+=======
+	if ((ext4_encrypted_inode(old_dir) &&
+	     !fscrypt_has_encryption_key(old_dir)) ||
+	    (ext4_encrypted_inode(new_dir) &&
+	     !fscrypt_has_encryption_key(new_dir)))
+		return -ENOKEY;
+
+	if ((ext4_encrypted_inode(old_dir) ||
+	     ext4_encrypted_inode(new_dir)) &&
+	    (old_dir != new_dir) &&
+	    (!fscrypt_has_permitted_context(new_dir, old.inode) ||
+	     !fscrypt_has_permitted_context(old_dir, new.inode)))
+		return -EXDEV;
+
+>>>>>>> v4.14.204
 	if ((ext4_test_inode_flag(new_dir, EXT4_INODE_PROJINHERIT) &&
 	     !projid_eq(EXT4_I(new_dir)->i_projid,
 			EXT4_I(old_dentry->d_inode)->i_projid)) ||

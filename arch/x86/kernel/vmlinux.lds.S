@@ -358,9 +358,13 @@ SECTIONS
 		__bss_start = .;
 		*(.bss..page_aligned)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		. = ALIGN(PAGE_SIZE);
 =======
 >>>>>>> 53993bba307d (x86/build/lto: Fix truncated .bss with -fdata-sections)
+=======
+		. = ALIGN(PAGE_SIZE);
+>>>>>>> 12-rui2
 		*(BSS_MAIN)
 		. = ALIGN(PAGE_SIZE);
 		__bss_stop = .;
