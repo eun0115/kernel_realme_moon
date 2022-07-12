@@ -132,3 +132,5 @@ kernel/configs/android-*.cfg
 /AnyKernel/
 /modules/
 moon.sh
+.gitpod.yml
+.vscode
