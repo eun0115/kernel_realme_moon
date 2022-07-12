@@ -375,7 +375,6 @@ static int f2fs_link(struct dentry *old_dentry, struct inode *dir,
 	struct f2fs_sb_info *sbi = F2FS_I_SB(dir);
 	int err;
 
-	if (unlikely(f2fs_cp_error(sbi)))
 		return -EIO;
 	if (!f2fs_is_checkpoint_ready(sbi))
 		return -ENOSPC;
@@ -384,11 +383,9 @@ static int f2fs_link(struct dentry *old_dentry, struct inode *dir,
 	if (err)
 		return err;
 
-	if (is_inode_flag_set(dir, FI_PROJ_INHERIT) &&
 			(!projid_eq(F2FS_I(dir)->i_projid,
 			F2FS_I(old_dentry->d_inode)->i_projid)))
 		return -EXDEV;
-
 	err = dquot_initialize(dir);
 	if (err)
 		return err;
